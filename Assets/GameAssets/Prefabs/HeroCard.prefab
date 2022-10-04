@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroCardUi: {fileID: 5597828569233534315}
   outline: {fileID: 5597828568425893803}
-  hero: {fileID: 11400000, guid: 763aa34c9fd6b4354a6a74d352b869a3, type: 2}
+  heroAttribute: {fileID: 0}
 --- !u!114 &5597828569233534315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,3 +1082,4 @@ MonoBehaviour:
   attackPowerText: {fileID: 1407736875}
   experienceText: {fileID: 1972210880}
   levelText: {fileID: 1812833722}
+  img: {fileID: 5597828567919678279}

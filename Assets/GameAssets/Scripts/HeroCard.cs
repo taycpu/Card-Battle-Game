@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class HeroCard : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
-{
 
-    public bool IsUnlocked => hero.IsUnlocked;
-    
+public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+{
+    public bool IsUnlocked => heroAttribute.IsUnlocked;
+
     [SerializeField] private HeroCardUI heroCardUi;
     [SerializeField] private Image outline;
-    [SerializeField] private Hero hero;
+    [SerializeField] private HeroAttribute heroAttribute;
 
-    private const float C_infoPopupTime=2f;
+    private const float C_infoPopupTime = 2f;
     private bool isPicked;
     private bool canOpen;
     private float pressedTime;
@@ -24,18 +24,17 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
 
     public void Initialize()
     {
-        heroCardUi.Initialize(hero);
+        heroCardUi.Initialize(heroAttribute);
     }
 
     private void Update()
     {
-        if (isPicked)
+        if (!Input.GetMouseButtonDown(0) || !isPicked) return;
+
+        if (Time.time - pressedTime > C_infoPopupTime && canOpen)
         {
-            if (Time.time-pressedTime > C_infoPopupTime && canOpen)
-            {
-                canOpen = false;
-                heroCardUi.InfoPopup(true);
-            }
+            canOpen = false;
+            heroCardUi.InfoPopup(true);
         }
     }
 
@@ -60,12 +59,12 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
 
     private void Unpick()
     {
-        HeroInventory.Instance.UnPickHero(hero);
+        HeroInventory.Instance.UnPickHero(heroAttribute);
     }
 
     private void Pick()
     {
-        HeroInventory.Instance.PickHero(hero);
+        HeroInventory.Instance.PickHero(heroAttribute);
     }
 
     public void OnPointerUp(PointerEventData eventData)

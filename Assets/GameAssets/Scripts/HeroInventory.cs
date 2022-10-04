@@ -5,8 +5,9 @@ using UnityEngine;
 public class HeroInventory : MonoBehaviour
 {
     public static HeroInventory Instance;
-    
-    [SerializeField]private List<Hero> pickedHeroes = new List<Hero>();
+
+    public List<HeroAttribute> PickedHeroes => pickedHeroes;
+    [SerializeField] private List<HeroAttribute> pickedHeroes;
     private void Awake()
     {
         if (Instance != null)
@@ -15,13 +16,13 @@ public class HeroInventory : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(Instance);
     }
-    public void PickHero(Hero hero)
+    public void PickHero(HeroAttribute heroAttribute)
     {
-        pickedHeroes.Add(hero);
+        pickedHeroes.Add(heroAttribute);
     }
 
-    public void UnPickHero(Hero hero)
+    public void UnPickHero(HeroAttribute heroAttribute)
     {
-        pickedHeroes.Remove(hero);
+        pickedHeroes.Remove(heroAttribute);
     }
 }

@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba2173c570146779937fe126529f629, type: 3}
+  m_Script: {fileID: 11500000, guid: 00193ade8795146b49bb27f7563e8c13, type: 3}
   m_Name: Pikachu
   m_EditorClassIdentifier: 
   heroName: Pikachu
-  health: 100
-  attackPower: 20
+  color: {r: 0.2166667, g: 0, b: 1, a: 1}
+  heroId: 6
+  health: 110
+  attackPower: 15
   experience: 0
-  level: 5
+  level: 1
+  IsUnlocked: 0
