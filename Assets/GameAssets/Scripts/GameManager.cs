@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,11 +20,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+
+    public void NextScene()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SaveManager.Save("Balbasaur", 13);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -12,9 +12,9 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Image outline;
     [SerializeField] private HeroAttribute heroAttribute;
 
-    private const float C_infoPopupTime = 2f;
+    private const float C_infoPopupTime = 1f;
     private bool isPicked;
-    private bool canOpen;
+    private bool canPopupOpen;
     private float pressedTime;
 
     private void Awake()
@@ -29,11 +29,11 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Update()
     {
-        if (!Input.GetMouseButtonDown(0) || !isPicked) return;
+        if (!Input.GetMouseButton(0) || !isPicked) return;
 
-        if (Time.time - pressedTime > C_infoPopupTime && canOpen)
+        if (Time.time - pressedTime > C_infoPopupTime && canPopupOpen)
         {
-            canOpen = false;
+            canPopupOpen = false;
             heroCardUi.InfoPopup(true);
         }
     }
@@ -43,7 +43,7 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (!isPicked)
         {
             Pick();
-            canOpen = true;
+            canPopupOpen = true;
             pressedTime = Time.time;
         }
         else
@@ -70,9 +70,13 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log("Pointer up" + heroCardUi.IsInfoActive);
-        if (!canOpen)
+        if (!canPopupOpen)
         {
             heroCardUi.InfoPopup(false);
+        }
+        else
+        {
+            canPopupOpen = false;
         }
     }
 }

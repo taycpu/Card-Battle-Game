@@ -1,33 +1,19 @@
 using UnityEngine;
 
 
-public abstract class HeroObject : MonoBehaviour
+public abstract class HeroObject : Unit
 {
-    protected HeroAttribute heroAttribute;
-    public int health;
+    [SerializeField] protected HeroAttribute heroAttribute;
 
-    public virtual void Activate()
+
+    public override void Activate(Vector3 startPos)
     {
-        gameObject.SetActive(true);
         health = heroAttribute.health;
     }
 
-    public virtual void TakeDamage(int dmg)
-    {
-        health -= dmg;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
 
-    protected virtual void Die()
+    public void Clicked()
     {
-        Debug.Log("Die");
-    }
-
-    public virtual void Attack(HeroObject enemy)
-    {
-        enemy.TakeDamage(heroAttribute.attackPower);
+        Debug.Log("Clicked =" + transform.name);
     }
 }

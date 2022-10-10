@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroFactory : MonoBehaviour
+public class HeroFactory : Factory
 {
     public List<HeroObject> HeroObjects;
+    [SerializeField] private List<Transform> heroPlaces;
 
-    public void GenerateHero(int id)
+    public override void Generate(int id)
     {
-        HeroObjects[id].Activate();
+        HeroObjects[id].Activate(heroPlaces[id].position);
     }
 }

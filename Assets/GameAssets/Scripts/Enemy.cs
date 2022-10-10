@@ -1,14 +1,3 @@
-using UnityEngine;
-
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Unit
 {
-    public int health;
-
-
-
-    public void TakeDamage(int dmg)
-    {
-        health -= dmg;
-    }
-    
 }

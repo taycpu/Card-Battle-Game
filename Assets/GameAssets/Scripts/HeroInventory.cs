@@ -8,6 +8,7 @@ public class HeroInventory : MonoBehaviour
 
     public List<HeroAttribute> PickedHeroes => pickedHeroes;
     [SerializeField] private List<HeroAttribute> pickedHeroes;
+
     private void Awake()
     {
         if (Instance != null)
@@ -16,6 +17,7 @@ public class HeroInventory : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(Instance);
     }
+
     public void PickHero(HeroAttribute heroAttribute)
     {
         pickedHeroes.Add(heroAttribute);
@@ -24,5 +26,10 @@ public class HeroInventory : MonoBehaviour
     public void UnPickHero(HeroAttribute heroAttribute)
     {
         pickedHeroes.Remove(heroAttribute);
+    }
+
+    public void ClearPickedHeroes()
+    {
+        pickedHeroes.Clear();
     }
 }
