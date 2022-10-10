@@ -2,7 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour, IInfoPopup
 {
     [SerializeField] protected Unit rival;
     [SerializeField] private CharacterAttribute characterAttribute;
@@ -31,14 +31,15 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void Attack(Unit unit)
     {
-        transform.DOMove(unit.transform.position, 0.3f).OnComplete(() => DOVirtual.DelayedCall(0.2f, CompleteAttack));
+        readyToAttack = false;
+        transform.DOMove(unit.transform.position, 0.3f)
+            .OnComplete(() => DOVirtual.DelayedCall(0.2f, CompleteAttack));
     }
 
     public virtual void CompleteAttack()
     {
         transform.DOMove(startPos, 0.2f).OnComplete(() => onAttackComplete?.Invoke());
         rival.TakeDamage(characterAttribute.attackPower);
-        readyToAttack = false;
     }
 
     public virtual void Activate(Vector3 startPos, Action onAttackEnd)
@@ -57,5 +58,12 @@ public abstract class Unit : MonoBehaviour
         isDead = true;
     }
 
-    public abstract void Clicked();
+    public void Focused()
+    {
+    }
+
+    public void SetBusy()
+    {
+        readyToAttack = false;
+    }
 }

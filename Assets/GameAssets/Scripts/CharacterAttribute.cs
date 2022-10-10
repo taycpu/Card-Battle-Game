@@ -14,4 +14,9 @@ public class CharacterAttribute : ScriptableObject
     public int experience;
     [Range(1, 99)] public int level;
     public bool IsUnlocked;
+
+    public void LevelUp()
+    {
+        
+    }
 }

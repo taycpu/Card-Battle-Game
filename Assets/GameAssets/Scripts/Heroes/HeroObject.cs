@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class HeroObject : Unit
 {
-    public override void Clicked()
+    public virtual void Clicked()
     {
         if (!readyToAttack) return;
         Attack(rival);

@@ -14,6 +14,8 @@ public class GameSceneController : MonoBehaviour
     {
         SpawnHeroes();
         SpawnEnemies();
+        roundController.WinEvent = Win;
+        roundController.LoseEvent = Lose;
         roundController.SwitchTurn();
     }
 
@@ -29,5 +31,15 @@ public class GameSceneController : MonoBehaviour
         {
             heroFactory.Generate(heroes[i].heroId, roundController.SwitchTurn);
         }
+    }
+
+    private void Win()
+    {
+        Debug.Log("Winned");
+    }
+
+    private void Lose()
+    {
+        Debug.Log("Lose");
     }
 }
