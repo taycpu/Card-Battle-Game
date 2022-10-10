@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Characters/Hero", fileName = "Hero", order = 0)]
+[CreateAssetMenu(menuName = "Characters/Hero", fileName = "Character", order = 0)]
 
-public class HeroAttribute : ScriptableObject
+public class CharacterAttribute : ScriptableObject
 {
     public string heroName;
     public Color color;

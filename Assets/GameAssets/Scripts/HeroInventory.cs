@@ -6,8 +6,8 @@ public class HeroInventory : MonoBehaviour
 {
     public static HeroInventory Instance;
 
-    public List<HeroAttribute> PickedHeroes => pickedHeroes;
-    [SerializeField] private List<HeroAttribute> pickedHeroes;
+    public List<CharacterAttribute> PickedHeroes => pickedHeroes;
+    [SerializeField] private List<CharacterAttribute> pickedHeroes;
 
     private void Awake()
     {
@@ -18,14 +18,14 @@ public class HeroInventory : MonoBehaviour
         DontDestroyOnLoad(Instance);
     }
 
-    public void PickHero(HeroAttribute heroAttribute)
+    public void PickHero(CharacterAttribute characterAttribute)
     {
-        pickedHeroes.Add(heroAttribute);
+        pickedHeroes.Add(characterAttribute);
     }
 
-    public void UnPickHero(HeroAttribute heroAttribute)
+    public void UnPickHero(CharacterAttribute characterAttribute)
     {
-        pickedHeroes.Remove(heroAttribute);
+        pickedHeroes.Remove(characterAttribute);
     }
 
     public void ClearPickedHeroes()

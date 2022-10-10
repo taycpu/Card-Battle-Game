@@ -12,16 +12,16 @@ public class HeroCardUI : MonoBehaviour
     [SerializeField] private Text levelText;
     [SerializeField] private Image img;
     
-    public void Initialize(HeroAttribute heroAttribute)
+    public void Initialize(CharacterAttribute characterAttribute)
     {
-        if (heroAttribute == null) return;
+        if (characterAttribute == null) return;
 
-        heroNameText.text = heroAttribute.heroName;
-        attackPowerText.text = heroAttribute.attackPower.ToString();
-        experienceText.text = heroAttribute.experience.ToString();
-        levelText.text = heroAttribute.level.ToString();
-        levelText.text = heroAttribute.level.ToString();
-        img.color = heroAttribute.color;
+        heroNameText.text = characterAttribute.heroName;
+        attackPowerText.text = characterAttribute.attackPower.ToString();
+        experienceText.text = characterAttribute.experience.ToString();
+        levelText.text = characterAttribute.level.ToString();
+        levelText.text = characterAttribute.level.ToString();
+        img.color = characterAttribute.color;
     }
 
     public void InfoPopup(bool active)

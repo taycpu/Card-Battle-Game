@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public bool IsUnlocked => heroAttribute.IsUnlocked;
+    public bool IsUnlocked => characterAttribute.IsUnlocked;
 
     [SerializeField] private HeroCardUI heroCardUi;
     [SerializeField] private Image outline;
-    [SerializeField] private HeroAttribute heroAttribute;
+    [SerializeField] private CharacterAttribute characterAttribute;
 
     private const float C_infoPopupTime = 1f;
     private bool isPicked;
@@ -24,7 +24,7 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void Initialize()
     {
-        heroCardUi.Initialize(heroAttribute);
+        heroCardUi.Initialize(characterAttribute);
     }
 
     private void Update()
@@ -59,12 +59,12 @@ public class HeroCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Unpick()
     {
-        HeroInventory.Instance.UnPickHero(heroAttribute);
+        HeroInventory.Instance.UnPickHero(characterAttribute);
     }
 
     private void Pick()
     {
-        HeroInventory.Instance.PickHero(heroAttribute);
+        HeroInventory.Instance.PickHero(characterAttribute);
     }
 
     public void OnPointerUp(PointerEventData eventData)

@@ -1,14 +1,15 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFactory : MonoBehaviour
+public class EnemyFactory : Factory
 {
-    [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Transform> enemyPos;
-    
 
-    public void GenerateEnemy(int id)
+
+    public override void Generate(int id, Action onAttackEnd)
     {
-        enemies[id].Activate(enemyPos[id].position);
+        base.Generate(id, onAttackEnd);
+        units[id].Activate(enemyPos[id].position, onAttackEnd);
     }
 }

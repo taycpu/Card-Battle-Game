@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameInputController : MonoBehaviour
 {
     [SerializeField] private Camera camera;
-
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -16,9 +16,9 @@ public class GameInputController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.GetComponent<HeroObject>() != null)
+                if (hit.transform.gameObject.GetComponent<Unit>() != null)
                 {
-                    hit.transform.gameObject.GetComponent<HeroObject>().Clicked();
+                    hit.transform.gameObject.GetComponent<Unit>().Clicked();
                 }
             }   
         }

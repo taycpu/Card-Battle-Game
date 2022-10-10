@@ -3,17 +3,10 @@ using UnityEngine;
 
 public abstract class HeroObject : Unit
 {
-    [SerializeField] protected HeroAttribute heroAttribute;
-
-
-    public override void Activate(Vector3 startPos)
+    public override void Clicked()
     {
-        health = heroAttribute.health;
-    }
-
-
-    public void Clicked()
-    {
-        Debug.Log("Clicked =" + transform.name);
+        if (!readyToAttack) return;
+        Attack(rival);
+        Debug.Log("Attacker name = " + transform.name);
     }
 }
