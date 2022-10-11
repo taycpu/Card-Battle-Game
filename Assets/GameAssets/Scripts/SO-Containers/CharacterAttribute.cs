@@ -1,3 +1,5 @@
+using System;
+using GameAssets.Scripts.Misc;
 using UnityEngine;
 
 namespace GameAssets.Scripts.SO_Containers
@@ -27,6 +29,42 @@ namespace GameAssets.Scripts.SO_Containers
         [SerializeField] private int experience;
         [SerializeField] private int level;
 
+
+        public void Unlock()
+        {
+            IsUnlocked = true;
+            SaveManager.Save(heroName + "unlock", 1);
+        }
+
+        public void Load()
+        {
+            if (SaveManager.GetValue(heroName + "unlock", out var unlocked))
+            {
+                IsUnlocked = Convert.ToBoolean(unlocked);
+            }
+
+            if (SaveManager.GetValue(heroName + "level", out var lvl))
+            {
+                level = (int)lvl;
+            }
+
+            if (SaveManager.GetValue(heroName + "experience", out var expr))
+            {
+                experience = (int)expr;
+            }
+
+            if (SaveManager.GetValue(heroName + "health", out var hlth))
+            {
+                health = hlth;
+            }
+
+            if (SaveManager.GetValue(heroName + "attackPower", out var aP))
+            {
+                attackPower = aP;
+            }
+        }
+
+
         public void TakeExperience(int amount)
         {
             experience += amount;
@@ -35,6 +73,8 @@ namespace GameAssets.Scripts.SO_Containers
                 experience = 0;
                 LevelUp();
             }
+
+            SaveManager.Save(heroName + "experience", experience);
         }
 
         private void LevelUp()
@@ -42,6 +82,9 @@ namespace GameAssets.Scripts.SO_Containers
             level++;
             health += health / 10;
             attackPower += attackPower / 10f;
+            SaveManager.Save(heroName + "level", level);
+            SaveManager.Save(heroName + "health", health);
+            SaveManager.Save(heroName + "attackPower", attackPower);
         }
     }
 }

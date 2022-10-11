@@ -16,7 +16,7 @@ MonoBehaviour:
   heroName: Wario
   color: {r: 0.7166667, g: 0, b: 1, a: 1}
   heroId: 7
-  health: 80
-  attackPower: 35
-  experience: 0
+  health: 160
+  attackPower: 50
+  experience: 1
   level: 1

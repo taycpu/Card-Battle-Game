@@ -17,6 +17,6 @@ MonoBehaviour:
   color: {r: 0.16981131, g: 0.16420433, b: 0.16420433, a: 1}
   heroId: 0
   health: 200
-  attackPower: 50
+  attackPower: 40
   experience: 1
   level: 5

@@ -11,7 +11,9 @@ namespace GameAssets.Scripts
 
         private void Awake()
         {
-            InitAllManagers();
+            SaveManager.ReadFile(InitAllManagers);
+            
+            
         }
 
 

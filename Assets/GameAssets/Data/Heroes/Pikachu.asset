@@ -16,7 +16,7 @@ MonoBehaviour:
   heroName: Pikachu
   color: {r: 0.2166667, g: 0, b: 1, a: 1}
   heroId: 6
-  health: 110
-  attackPower: 15
-  experience: 0
+  health: 150
+  attackPower: 50
+  experience: 1
   level: 1

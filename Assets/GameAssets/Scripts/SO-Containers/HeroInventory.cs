@@ -18,7 +18,7 @@ namespace GameAssets.Scripts.SO_Containers
             var unlocked = AllHeroes.FindAll(s => !s.IsUnlocked);
             if (unlocked.Count == 0) return;
 
-            unlocked.GetRandom().IsUnlocked = true;
+            unlocked.GetRandom().Unlock();
         }
 
         public void PickHero(CharacterAttribute characterAttribute)

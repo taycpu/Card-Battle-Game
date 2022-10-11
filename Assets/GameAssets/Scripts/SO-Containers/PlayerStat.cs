@@ -1,3 +1,4 @@
+using GameAssets.Scripts.Misc;
 using UnityEngine;
 
 namespace GameAssets.Scripts.SO_Containers
@@ -9,14 +10,31 @@ namespace GameAssets.Scripts.SO_Containers
         public int LoseCount;
 
 
+        public void Load()
+        {
+            if (SaveManager.GetValue("WinCount", out var wC))
+            {
+                WinCount = (int)wC;
+            }
+
+            if (SaveManager.GetValue("LoseCount", out var lc))
+            {
+                LoseCount = (int)lc;
+            }
+
+
+        }
+
         public void Win()
         {
             WinCount++;
+            SaveManager.Save("WinCount", WinCount);
         }
 
         public void Lose()
         {
             LoseCount++;
+            SaveManager.Save("LoseCount", LoseCount);
         }
     }
 }

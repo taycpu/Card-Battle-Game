@@ -914,6 +914,7 @@ MonoBehaviour:
   - {fileID: 1949335614}
   - {fileID: 282434103}
   heroInventory: {fileID: 11400000, guid: 05bfa089202ab483390953914ab5c659, type: 2}
+  playerStat: {fileID: 11400000, guid: d5d5817e55d174f4da34350002a82567, type: 2}
 --- !u!4 &531489651
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   heroName: Peach
   color: {r: 0, g: 0.4666667, b: 1, a: 1}
   heroId: 5
-  health: 50
-  attackPower: 50
-  experience: 0
+  health: 120
+  attackPower: 45
+  experience: 1
   level: 1

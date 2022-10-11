@@ -16,7 +16,7 @@ MonoBehaviour:
   heroName: Dragonoid
   color: {r: 0.85, g: 1, b: 0, a: 1}
   heroId: 2
-  health: 80
+  health: 100
   attackPower: 35
-  experience: 0
+  experience: 1
   level: 1
