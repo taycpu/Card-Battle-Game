@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00193ade8795146b49bb27f7563e8c13, type: 3}
   m_Name: Natsu
   m_EditorClassIdentifier: 
-  IsUnlocked: 1
+  IsUnlocked: 0
   heroName: Natsu
   color: {r: 0, g: 1, b: 0.3833332, a: 1}
   heroId: 4
