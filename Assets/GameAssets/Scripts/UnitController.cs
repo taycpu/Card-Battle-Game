@@ -5,9 +5,9 @@ public abstract class UnitController : MonoBehaviour
 {
     [SerializeField] protected List<Unit> activeUnits;
 
-    public void SetActiveUnits(List<Unit> units)
+    public void SetActiveUnits(Unit unit)
     {
-        activeUnits = units;
+        activeUnits.Add(unit);
     }
 
     public void GetReadyForTurn(Unit rivalUnit)
@@ -19,7 +19,7 @@ public abstract class UnitController : MonoBehaviour
 
         SetUnit(activeUnits, rivalUnit);
     }
-    
+
 
     protected virtual void SetUnit(List<Unit> selectedUnit, Unit rival)
     {

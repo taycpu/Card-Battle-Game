@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class RoundController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private EnemyController enemyController;
 
-    public Action WinEvent;
+    public Action<List<Unit>> WinEvent;
     public Action LoseEvent;
 
 
@@ -31,28 +32,21 @@ public class RoundController : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        if (isPlayerTurn)
+        if (enemyController.IsAllUnitsDead())
         {
-            if (!enemyController.IsAllUnitsDead())
-            {
-                playerController.GetReadyForTurn(enemyController.GetActiveUnit());
-            }
-            else
-            {
-                WinEvent?.Invoke();
-            }
+            WinEvent(playerController.GetLiveUnits());
         }
-
-        else
+        else if (playerController.IsAllUnitsDead())
         {
-            if (!playerController.IsAllUnitsDead())
-            {
-                enemyController.GetReadyForTurn(playerController.GetActiveUnit());
-            }
-            else
-            {
-                LoseEvent?.Invoke();
-            }
+            LoseEvent?.Invoke();
+        }
+        else if (isPlayerTurn)
+        {
+            playerController.GetReadyForTurn(enemyController.GetActiveUnit());
+        }
+        else if (!isPlayerTurn)
+        {
+            enemyController.GetReadyForTurn(playerController.GetActiveUnit());
         }
     }
 }

@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Manager[] managers;
-
+    
     private void Awake()
     {
         SaveManager.ReadFile(onComplete:InitAllManagers);
     }
+
 
     private void InitAllManagers()
     {

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class PlayerController : UnitController
 {
     public void LockOtherUnits()
@@ -6,5 +8,10 @@ public class PlayerController : UnitController
         {
             activeUnits[i].SetBusy();
         }
+    }
+
+    public List<Unit> GetLiveUnits()
+    {
+        return activeUnits.FindAll(u => !u.IsDead);
     }
 }

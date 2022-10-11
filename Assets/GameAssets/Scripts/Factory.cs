@@ -10,6 +10,6 @@ public abstract class Factory : MonoBehaviour
 
     public virtual void Generate(int id, Action onAttackEnd)
     {
-        unitController.SetActiveUnits(units);
+        unitController.SetActiveUnits(units[id]);
     }
 }

@@ -5,16 +5,16 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour, IInfoPopup
 {
     [SerializeField] protected Unit rival;
-    [SerializeField] private CharacterAttribute characterAttribute;
+    public CharacterAttribute characterAttribute;
 
     public bool readyToAttack;
     public bool IsDead => isDead;
-    public int health;
+    public double health;
     private bool isDead;
     private Vector3 startPos;
     private Action onAttackComplete;
 
-    public virtual void TakeDamage(int dmg)
+    public virtual void TakeDamage(double dmg)
     {
         health -= dmg;
         if (health <= 0)
@@ -39,12 +39,13 @@ public abstract class Unit : MonoBehaviour, IInfoPopup
     public virtual void CompleteAttack()
     {
         transform.DOMove(startPos, 0.2f).OnComplete(() => onAttackComplete?.Invoke());
-        rival.TakeDamage(characterAttribute.attackPower);
+        rival.TakeDamage(characterAttribute.AttackPower);
     }
 
     public virtual void Activate(Vector3 startPos, Action onAttackEnd)
     {
-        health = characterAttribute.health;
+        
+        health = characterAttribute.Health;
         this.startPos = startPos;
         transform.position = startPos;
         gameObject.SetActive(true);
@@ -56,6 +57,7 @@ public abstract class Unit : MonoBehaviour, IInfoPopup
     {
         Debug.Log("Die");
         isDead = true;
+        transform.DOScale(Vector3.zero, 0.2f);
     }
 
     public void Focused()

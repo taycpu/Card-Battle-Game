@@ -2,20 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroInventory : MonoBehaviour
+[CreateAssetMenu(menuName = "Create HeroInventory", fileName = "HeroInventory", order = 0)]
+public class HeroInventory : ScriptableObject
 {
-    public static HeroInventory Instance;
+    public List<CharacterAttribute> AllHeroes;
 
     public List<CharacterAttribute> PickedHeroes => pickedHeroes;
     [SerializeField] private List<CharacterAttribute> pickedHeroes;
 
-    private void Awake()
-    {
-        if (Instance != null)
-            Destroy(this);
 
-        Instance = this;
-        DontDestroyOnLoad(Instance);
+    public void UnlockRandomHero()
+    {
+        var unlocked = AllHeroes.FindAll(s => !s.IsUnlocked);
+        if (unlocked.Count == 0) return;
+
+        unlocked.GetRandom().IsUnlocked = true;
     }
 
     public void PickHero(CharacterAttribute characterAttribute)

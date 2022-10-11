@@ -16,12 +16,11 @@ public class HeroCardUI : MonoBehaviour
     {
         if (characterAttribute == null) return;
 
-        heroNameText.text = characterAttribute.heroName;
-        attackPowerText.text = characterAttribute.attackPower.ToString();
-        experienceText.text = characterAttribute.experience.ToString();
-        levelText.text = characterAttribute.level.ToString();
-        levelText.text = characterAttribute.level.ToString();
-        img.color = characterAttribute.color;
+        heroNameText.text = characterAttribute.HeroName;
+        attackPowerText.text = characterAttribute.AttackPower.ToString();
+        experienceText.text = characterAttribute.Experience.ToString();
+        levelText.text = characterAttribute.Level.ToString(); 
+        img.color = characterAttribute.Color;
     }
 
     public void InfoPopup(bool active)
