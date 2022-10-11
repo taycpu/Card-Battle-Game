@@ -58,7 +58,6 @@ namespace GameAssets.Scripts.HeroCards
 
         private void Pick()
         {
-            Debug.Log("PICKED HEROES +" + heroInventory.PickedHeroes.Count.ToString());
             if (heroInventory.PickedHeroes.Count >= C_MaxSelectable) return;
             heroInventory.PickHero(characterAttribute);
             canPopupOpen = true;
