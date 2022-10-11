@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa10d631aba47de95707355b22d3514, type: 3}
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
+  WinCount: 0
+  LoseCount: 0

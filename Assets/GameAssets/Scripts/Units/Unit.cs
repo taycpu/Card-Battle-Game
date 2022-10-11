@@ -1,8 +1,10 @@
 using System;
 using DG.Tweening;
 using GameAssets.Scripts.SO_Containers;
+using GameAssets.Scripts.UI;
 using GameAssets.Scripts.Units.Heroes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GameAssets.Scripts.Units
 {
@@ -17,18 +19,23 @@ namespace GameAssets.Scripts.Units
         protected bool readyToAttack;
 
         [SerializeField] private MeshRenderer mesh;
+
+        [SerializeField] private UnitUI unitUI;
+
         private bool isDead;
         private Vector3 startPos;
         private Action onAttackComplete;
 
-        public virtual void TakeDamage(double dmg)
+        public virtual void Activate(Vector3 startPos, Action onAttackEnd)
         {
-            health -= dmg;
-            if (health <= 0)
-            {
-                Die();
-            }
+            health = characterAttribute.Health;
+            this.startPos = startPos;
+            transform.position = startPos;
+            gameObject.SetActive(true);
+            mesh.material.color = characterAttribute.Color;
+            onAttackComplete = onAttackEnd;
         }
+
 
         public void AssignRival(Unit rival)
         {
@@ -45,18 +52,22 @@ namespace GameAssets.Scripts.Units
 
         protected virtual void CompleteAttack()
         {
+            double randDmg = (characterAttribute.AttackPower * 1.8f - characterAttribute.AttackPower) * Random.value +
+                             characterAttribute.AttackPower;
+            randDmg = Math.Round(randDmg);
+            DamagePopupUI.Instance.SetDamagePopup(rival.transform.position, randDmg);
             transform.DOMove(startPos, 0.2f).OnComplete(() => onAttackComplete?.Invoke());
-            rival.TakeDamage(characterAttribute.AttackPower);
+            rival.TakeDamage(randDmg);
         }
 
-        public virtual void Activate(Vector3 startPos, Action onAttackEnd)
+        public virtual void TakeDamage(double dmg)
         {
-            health = characterAttribute.Health;
-            this.startPos = startPos;
-            transform.position = startPos;
-            gameObject.SetActive(true);
-            mesh.material.color = characterAttribute.Color;
-            onAttackComplete = onAttackEnd;
+            health -= dmg;
+            unitUI.UpdateHealth(health / characterAttribute.Health);
+            if (health <= 0)
+            {
+                Die();
+            }
         }
 
         protected virtual void Die()

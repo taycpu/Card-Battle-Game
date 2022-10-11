@@ -6,7 +6,7 @@ namespace GameAssets.Scripts.Controllers
 {
     public abstract class UnitController : MonoBehaviour
     {
-        protected List<Unit> activeUnits;
+        protected List<Unit> activeUnits = new List<Unit>();
 
         public void SetActiveUnits(Unit unit)
         {
