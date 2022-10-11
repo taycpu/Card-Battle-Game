@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00193ade8795146b49bb27f7563e8c13, type: 3}
   m_Name: Zelda
   m_EditorClassIdentifier: 
+  IsUnlocked: 0
   heroName: Zelda
   color: {r: 1, g: 0, b: 0.6333332, a: 1}
   heroId: 8
@@ -19,4 +20,3 @@ MonoBehaviour:
   attackPower: 20
   experience: 0
   level: 1
-  IsUnlocked: 0

@@ -1,29 +1,34 @@
-using System;
-using System.Collections.Generic;
+using System.Linq;
+using GameAssets.Scripts.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace GameAssets.Scripts
 {
-    [SerializeField] private Manager[] managers;
-    
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        SaveManager.ReadFile(onComplete:InitAllManagers);
-    }
+        [SerializeField] private Manager[] managers;
 
-
-    private void InitAllManagers()
-    {
-        for (int i = 0; i < managers.Length; i++)
+        private void Awake()
         {
-            managers[i].Initialize();
+            InitAllManagers();
         }
-    }
 
 
-    public void NextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        private void InitAllManagers()
+        {
+            for (int i = 0; i < managers.Length; i++)
+            {
+                managers[i].Initialize();
+            }
+        }
+
+
+        public void NextScene()
+        {
+            var managersReady = managers.All(m => m.IsReady());
+            if (managersReady)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

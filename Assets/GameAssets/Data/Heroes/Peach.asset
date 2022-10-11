@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00193ade8795146b49bb27f7563e8c13, type: 3}
   m_Name: Peach
   m_EditorClassIdentifier: 
+  IsUnlocked: 0
   heroName: Peach
   color: {r: 0, g: 0.4666667, b: 1, a: 1}
   heroId: 5
@@ -19,4 +20,3 @@ MonoBehaviour:
   attackPower: 50
   experience: 0
   level: 1
-  IsUnlocked: 0

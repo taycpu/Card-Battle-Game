@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00193ade8795146b49bb27f7563e8c13, type: 3}
   m_Name: Dragonoid
   m_EditorClassIdentifier: 
+  IsUnlocked: 1
   heroName: Dragonoid
   color: {r: 0.85, g: 1, b: 0, a: 1}
   heroId: 2
@@ -19,4 +20,3 @@ MonoBehaviour:
   attackPower: 35
   experience: 0
   level: 1
-  IsUnlocked: 1

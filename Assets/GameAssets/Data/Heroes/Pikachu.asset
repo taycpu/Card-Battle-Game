@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00193ade8795146b49bb27f7563e8c13, type: 3}
   m_Name: Pikachu
   m_EditorClassIdentifier: 
+  IsUnlocked: 0
   heroName: Pikachu
   color: {r: 0.2166667, g: 0, b: 1, a: 1}
   heroId: 6
@@ -19,4 +20,3 @@ MonoBehaviour:
   attackPower: 15
   experience: 0
   level: 1
-  IsUnlocked: 0
